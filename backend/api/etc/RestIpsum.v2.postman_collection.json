@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "9ed395a9-6cd2-4cbe-b751-d304e7331279",
+		"name": "RestIpsum.v2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Generate Sample",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"schema\": [\n        {\n            \"name\": \"name\",\n            \"min\": 3,\n            \"max\": 10,\n            \"type\": \"str\",\n            \"has_blank\": true\n        },\n        {\n            \"name\": \"contact\",\n            \"type\": \"email\"\n        },\n        {\n            \"name\": \"ttl\",\n            \"min\": 0,\n            \"max\": 1,\n            \"type\": \"int\"\n        },\n        {\n            \"name\": \"supports\",\n            \"min\": 1,\n            \"max\": 11,\n            \"type\": \"list\",\n            \"model\": {\n                \"min\": 2,\n                \"max\": 3,\n                \"type\": \"str\",\n                \"has_blank\": false\n            }\n        },\n        {\n            \"name\": \"description\",\n            \"min\": 3,\n            \"max\": 65,\n            \"type\": \"str\",\n            \"has_blank\": true\n        },\n        {\n            \"name\": \"isFree\",\n            \"type\": \"bool\"\n        },\n        {\n            \"name\": \"website\",\n            \"type\": \"url\"\n        },\n        {\n            \"name\": \"localhost\",\n            \"type\": \"ip\"\n        },\n        {\n            \"name\": \"time\",\n            \"min\": -1551796200000,\n            \"max\": -1551191400000,\n            \"type\": \"date\",\n            \"isText\": true\n        },\n        {\n            \"name\": \"technologies\",\n            \"min\": 1,\n            \"max\": 1,\n            \"type\": \"model\",\n            \"model\": [\n                {\n                    \"name\": \"backend\",\n                    \"type\": \"url\"\n                },\n                {\n                    \"name\": \"frontend\",\n                    \"min\": 3,\n                    \"max\": 9,\n                    \"type\": \"str\",\n                    \"has_blank\": false\n                },\n                {\n                    \"name\": \"database\",\n                    \"min\": 3,\n                    \"max\": 5,\n                    \"type\": \"str\",\n                    \"has_blank\": false\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9595/api/schema/sample",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9595",
+					"path": [
+						"api",
+						"schema",
+						"sample"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Schema",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"schema\": [\n        {\n            \"name\": \"name\",\n            \"min\": 3,\n            \"max\": 10,\n            \"type\": \"str\",\n            \"has_blank\": true\n        },\n        {\n            \"name\": \"contact\",\n            \"type\": \"email\"\n        },\n        {\n            \"name\": \"ttl\",\n            \"min\": 0,\n            \"max\": 1,\n            \"type\": \"int\"\n        },\n        {\n            \"name\": \"supports\",\n            \"min\": 1,\n            \"max\": 11,\n            \"type\": \"list\",\n            \"model\": {\n                \"min\": 2,\n                \"max\": 3,\n                \"type\": \"str\",\n                \"has_blank\": false\n            }\n        },\n        {\n            \"name\": \"description\",\n            \"min\": 3,\n            \"max\": 65,\n            \"type\": \"str\",\n            \"has_blank\": true\n        },\n        {\n            \"name\": \"isFree\",\n            \"type\": \"bool\"\n        },\n        {\n            \"name\": \"website\",\n            \"type\": \"url\"\n        },\n        {\n            \"name\": \"localhost\",\n            \"type\": \"ip\"\n        },\n        {\n            \"name\": \"time\",\n            \"min\": -1551796200000,\n            \"max\": -1551191400000,\n            \"type\": \"date\",\n            \"isText\": true\n        },\n        {\n            \"name\": \"technologies\",\n            \"min\": 1,\n            \"max\": 1,\n            \"type\": \"model\",\n            \"model\": [\n                {\n                    \"name\": \"backend\",\n                    \"type\": \"url\"\n                },\n                {\n                    \"name\": \"frontend\",\n                    \"min\": 3,\n                    \"max\": 9,\n                    \"type\": \"str\",\n                    \"has_blank\": false\n                },\n                {\n                    \"name\": \"database\",\n                    \"min\": 3,\n                    \"max\": 5,\n                    \"type\": \"str\",\n                    \"has_blank\": false\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9595/api/schema/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9595",
+					"path": [
+						"api",
+						"schema",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Schema",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9595/api/schema/905e0a2a-12e1-4c1b-a4bc-962b105efa13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9595",
+					"path": [
+						"api",
+						"schema",
+						"905e0a2a-12e1-4c1b-a4bc-962b105efa13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Sample",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9595/api/ipsum/default/15",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9595",
+					"path": [
+						"api",
+						"ipsum",
+						"default",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Schema From Sample Data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"sample\":{\n  \"name\": \"rest ipsum\",\n  \"contact\": \"root@restipsum.com\",\n  \"ttl\": 1,\n  \"supports\": [\n    \"str\",\n    \"bool\",\n    \"int\",\n    \"float\",\n    \"enum\",\n    \"email\",\n    \"ip\",\n    \"uuid\",\n    \"date\",\n    \"url\",\n    \"model\"\n  ],\n  \"description\": \"Generates sample data for your client over a simple GET endpoint.\",\n  \"isFree\": true,\n  \"website\": \"https://restipsum.com\",\n  \"localhost\": \"127.0.0.1\",\n  \"time\": \"Fri, 29 Oct 1920 09:30:00 GMT\",\n  \"technologies\": {\n    \"backend\": \"Node.js\",\n    \"frontend\": \"AngularJs\",\n    \"database\": \"NoSQL\"\n  }\n}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9595/api/schema/generate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9595",
+					"path": [
+						"api",
+						"schema",
+						"generate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

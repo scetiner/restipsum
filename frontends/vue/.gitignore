@@ -1,0 +1,26 @@
+node_modules/
+log/
+*.sqlite3
+package-lock.json
+
+ext/filtre/dist/*map
+
+
+# swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+# session
+Session.vim
+# temporary
+.netrwhist
+*~
+# auto-generated tag files
+tags
+debug.log
+.sass-cache/
+.tmp/
+portal.zip
+src/public/dist
+.eslintrc.json
