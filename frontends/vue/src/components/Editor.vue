@@ -1,5 +1,7 @@
 <template>
-    <codemirror :value="json" :options="editorOption" ref="cEditor" @change="codeChanged"></codemirror>                     
+    <v-flex>
+        <codemirror :value="code" :options="editorOption" ref="cEditor" @change="codeChanged"></codemirror>                     
+    </v-flex>
 </template>
 
 <script>
@@ -11,33 +13,46 @@ export default {
     codemirror
   },
   props: {
-    code: Object
+    code: String,
+    readOnly: Boolean
   },
-  data:()=> ({    
-      editorOption: {
-        mode: "javascript",
-        extraKeys: { "Ctrl-Space": "autocomplete" },
-        smartIndent: true
-      }       
+  data:()=> ({          
   }),
   computed: {
-      json(){
-          return JSON.stringify(this.code,null,2);
-      },
     editor() {
       // get current editor object
       return this.$refs.cEditor.editor;
+    },
+    editorOption(){
+        return {
+        mode: "javascript",
+        extraKeys: { "Ctrl-Space": "autocomplete" },
+        smartIndent: true,
+        lineNumbers: true,
+        indentWithTabs: true,
+        lineWrapping: true,
+        readOnly:this.readOnly ? "nocursor": false,
+        disabled:this.readOnly
+      }  
+    }
+  },
+    watch:{
+    code:function(nv){
+      if(this.editor){
+        // this.editor.focus();
+      }
     }
   },
   methods:{
       codeChanged(newValue){
-          console.log(newValue);
+        //   this.editor.focus();
       }
   },
   mounted() {
     // use editor object...
-    this.editor.focus();
+    // this.editor.focus();
   }
 };
 </script>
+
 

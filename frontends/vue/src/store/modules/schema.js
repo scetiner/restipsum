@@ -43,13 +43,13 @@ const getters = {
         return state.token || "default";
     },
     sample:state => {
-        return state.defaultSample;
+        return state.defaultSample ? JSON.stringify(state.defaultSample, null, 2) : "";
     },
     ipsum: state => {
-        return state.ipsum;
+        return state.ipsum ? JSON.stringify(state.ipsum, null, 2) : "";
     },
     schema: state =>{
-        return state.schema || null;
+        return state.schema ? JSON.stringify(state.schema, null, 2): "";
     }
 };
 
