@@ -1,6 +1,6 @@
 <template>
-    <v-flex>
-        <codemirror :value="code" :options="editorOption" ref="cEditor" @change="codeChanged"></codemirror>                     
+    <v-flex >
+        <codemirror :value="code" :options="editorOption" ref="cEditor" @change="codeChanged"></codemirror>                             
     </v-flex>
 </template>
 
@@ -14,7 +14,7 @@ export default {
   },
   props: {
     code: String,
-    readOnly: Boolean
+    onUpdate:Function
   },
   data:()=> ({          
   }),
@@ -30,9 +30,7 @@ export default {
         smartIndent: true,
         lineNumbers: true,
         indentWithTabs: true,
-        lineWrapping: true,
-        readOnly:this.readOnly ? "nocursor": false,
-        disabled:this.readOnly
+        lineWrapping: true
       }  
     }
   },
@@ -44,8 +42,10 @@ export default {
     }
   },
   methods:{
-      codeChanged(newValue){
-        //   this.editor.focus();
+      codeChanged(newValue){        
+        if(this.onUpdate){
+          this.onUpdate(newValue);
+        }
       }
   },
   mounted() {

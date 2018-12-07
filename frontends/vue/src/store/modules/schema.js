@@ -62,11 +62,22 @@ const actions = {
         commit("setSchema",result);
         return;
     },
-    async generateSchema({ commit,state }, sample) {        
-        let [err,result] = await to(service.getSchema(sample || state.defaultSample));
+    async generateSchema({ commit,state }, sample) {         
+        let s = sample ? JSON.parse(sample) : state.defaultSample;
+        let [err,result] = await to(service.generateSchema(s));
         ErrorHandler.handleError(err);
 
         commit("setSchema",result);
+        return;
+    },
+    async getSample({ commit }, schema) {
+        console.log(schema)   
+        if(schema){
+            let [err,result] = await to(service.getSample(JSON.parse(schema)));
+            ErrorHandler.handleError(err);
+
+            commit("setIpsum",result);
+        }        
         return;
     }
 
@@ -76,6 +87,9 @@ const actions = {
 const mutations = {
     setSchema(state, schema) {
         state.schema = schema;
+    },
+    setIpsum(state,sample){
+        state.ipsum = sample;
     }
 };
 

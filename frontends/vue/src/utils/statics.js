@@ -8,7 +8,8 @@ export const URLS = {
             'schema':{
                 'get': getBase() + '/schema/',
                 'set': getBase() + '/schema/register',
-                'generate': getBase() + '/schema/generate'
+                'generate': getBase() + '/schema/generate',
+                'sample': getBase() + '/schema/sample'
             },
             'ipsum':{
                 'get': getBase() + '/ipsum/',                

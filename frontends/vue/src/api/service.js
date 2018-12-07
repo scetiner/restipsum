@@ -25,6 +25,18 @@ export default {
             console.error(e);
             return null;
         }
+    },
+    async getSample(schema) {
+        try {            
+            let [err,data] = await to(HTTP.post(URLS.API.RESTIPSUM.schema.sample,{
+                schema
+            })); 
+            ErrorHandler.handleError(err);
+            return data.result;            
+        } catch (e) {                        
+            console.error(e);
+            return null;
+        }
     }
 
 }
