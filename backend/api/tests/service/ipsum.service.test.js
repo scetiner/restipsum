@@ -8,7 +8,6 @@ global.conf = {
 
 const mongoose = require('mongoose');
 const {to} = require('await-to-js');
-// const logHelper = require('../../src/utils/log-helper');
 const { DefaultSchema } = require('../../src/statics/default_types');
 const IpsumService = require('../../src/service/IpsumService');
 

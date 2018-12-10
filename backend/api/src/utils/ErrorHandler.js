@@ -1,5 +1,5 @@
-const log = require('./log-helper').getLogger('utils-error-handler');
-
+const Logger = require('./Logger');
+const logger = new Logger('utils-error-handler').getLogger();
 module.exports = class ErrorHandler{
     constructor(){
     }
@@ -19,12 +19,12 @@ module.exports = class ErrorHandler{
             }
 
             err.handled = true;
-            log.error("Handled error:", err);
+            logger.error("Handled error:", err);
             throw err;
         }
 
         let msg = typeof err === "string" ? err : "Something went wrong and handled.";
-        log.error(msg);
+        logger.error(msg);
         let hError = new Error(msg);
         hError.handled = true;
         throw hError;

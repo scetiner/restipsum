@@ -1,5 +1,5 @@
 const IpsumRepository = require("../data/repository/IpsumRepository");
-const log = require("../utils/log-helper").getLogger("services-ipsum");
+const Logger = require("../utils/Logger");
 const { to } = require("await-to-js");
 const ErrorHandler = require("../utils/ErrorHandler");
 const SchemaUtils = require("../utils/SchemaUtils");
@@ -8,7 +8,7 @@ module.exports = class IpsumService {
   constructor() {
     this._ipsumRepository = new IpsumRepository();
     this._schemaUtils = new SchemaUtils();
-    this._logger = log;
+    this._logger = new Logger("services-ipsum").getLogger();
   }
 
   async getIpsum(token) {

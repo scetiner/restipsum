@@ -1,10 +1,11 @@
 const express = require('express');
 const ErrorMiddleware = require('../infra/middlewares/ErrorMiddleware').ErrorMiddlewarePath;
-const baseValidator = require('../infra/validators/BaseRouterValidator');
+const BaseRouterValidator = require('../infra/validators/BaseRouterValidator');
 
 const IpsumController = require('./IpsumController');
 const IpsumRouter = express.Router();
 const ipsumController = new IpsumController();
+const baseValidator = new BaseRouterValidator()
 
 IpsumRouter.post('/schema/generate', ErrorMiddleware(1), ipsumController.generateSchema.bind(ipsumController));
 IpsumRouter.post('/schema/register', ErrorMiddleware(2), baseValidator.schemaValidation, ipsumController.registerSchema.bind(ipsumController));

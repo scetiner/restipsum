@@ -1,12 +1,12 @@
 const { to } = require('await-to-js');
 const uuidv4 = require('uuid/v4');
 const Ipsum = require('../model/Ipsum');
-const log = require('../../utils/log-helper').getLogger('route-ipsum-repo');
+const Logger = require('../../utils/Logger');
 const ErrorHandler = require('../../utils/ErrorHandler');
 
 module.exports = class IpsumRepository {
     constructor() {
-        this._logger = log;
+        this._logger = new Logger('route-ipsum-repo').getLogger();
     }
 
     async getIpsum(token) {

@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const _ = require('lodash');
 const log4js = require('log4js');
-const logHelper = require('./src/utils/log-helper');
+const Logger = require('./src/utils/Logger');
 const mongoose = require('mongoose');
 
 /**
@@ -28,12 +28,12 @@ class Server {
     constructor() {
         // create expressjs application
         this.app = express();
+        Logger.initializeLogger('./log', './src/conf/log4js.json');
 
         this.serverConfig = this.loadConfiguration();
         // even though we don't want this - our views depend on global.conf
         global.conf = this.serverConfig;
-        logHelper.initializeLogger('./log', './src/conf/log4js.json');
-        this.logger = logHelper.getLogger('app');
+        this.logger = new Logger('app').getLogger();
         this.initializeProperties();
         // configure application
         this.config();
@@ -122,7 +122,7 @@ class Server {
     config() {
         this.port = process.env.PORT || this.serverConfig.listenPort;
 
-        this.app.use(log4js.connectLogger(logHelper.getHttpLogger('http'), { level: 'INFO', format: '[:method :status :url - :response-timems :res[content-length]] - [:req[Host] :req[x-forwarded-for] - :remote-addr] - [HTTP/:http-version - :user-agent]' }));
+        this.app.use(log4js.connectLogger(Logger.getHttpLogger(), { level: 'INFO', format: '[:method :status :url - :response-timems :res[content-length]] - [:req[Host] :req[x-forwarded-for] - :remote-addr] - [HTTP/:http-version - :user-agent]' }));
         this.app.use(bodyParser.json({ limit: '2mb' }));
         this.app.use(bodyParser.urlencoded({ extended: false }));
         this.app.use(cookieParser());

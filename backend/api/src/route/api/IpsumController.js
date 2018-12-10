@@ -1,5 +1,5 @@
 const BaseRoute = require('../infra/base/BaseRoute');
-const log = require('../../utils/log-helper').getLogger('controller-ipsum');
+const Logger = require('../../utils/Logger');
 const { ErrorTypes } = require('../infra/middlewares/ErrorMiddleware');
 const IpsumService = require('../../service/IpsumService');
 const { SystemMessages, DefaultSchema } = require('../../statics/default_types');
@@ -8,7 +8,7 @@ const ErrorHandler = require('../../utils/ErrorHandler');
 
 module.exports = class IpsumController {
     constructor() {
-        this._logger = log;
+        this._logger = new Logger('controller-ipsum').getLogger();
         this._ipsumService = new IpsumService();
     }
 
