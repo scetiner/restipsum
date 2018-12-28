@@ -46,6 +46,9 @@ module.exports = class SchemaUtils {
             case "float":
                 extracted = this.randomizer.getRandomFloat(item.min, item.max);
                 break;
+            case "objectId":
+                extracted = this.randomizer.getRandomObjectId();
+                break;
             case "model":
                 // extracted[item.name] = convertToSampleItem(item.model);
                 var data = {};
@@ -106,6 +109,10 @@ module.exports = class SchemaUtils {
             } else if (validator.isDataURI(val)) {
                 item.type = "dataUri";
                 item.values = [val];
+            } else if (validator.isMongoId(val)) {
+                item.type = "objectId";
+                item.min = undefined
+                item.max = undefined;
             } else {
                 item.type = "str";
                 item.max = val.length;

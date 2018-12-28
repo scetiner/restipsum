@@ -1,4 +1,5 @@
 const uuidv4 = require('uuid/v4');
+const { ObjectId } = require('mongoose').Types
 
 module.exports = class Randomizer {
     constructor() {
@@ -36,6 +37,10 @@ module.exports = class Randomizer {
 
     getRandomFloat(min, max) {
         return Math.random() * (max - min) + min;
+    }
+
+    getRandomObjectId() {
+      return new ObjectId()
     }
 
     getRandomString(min, max, hasBlank) {
