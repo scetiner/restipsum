@@ -1,17 +1,14 @@
 <template>
-    <v-flex >
-        <codemirror :value="code" :options="editorOption" ref="cEditor" @change="codeChanged"></codemirror>                             
+    <v-flex style="height: 400px;">
+        <!-- <vue-json-editor v-model="code" :show-btns="true" :expandedOnStart="true" @json-change="codeChanged"></vue-json-editor> -->
+        <!-- <v-jsoneditor ref="cEditor" v-model="json" :options="options" :plus="false" height="400px" @error="onError" @onChangeJSON="codeChanged"/> -->
+        <textarea v-model="code" style="width: 100%; height: 100%;"/>
     </v-flex>
 </template>
 
 <script>
-import { codemirror } from "vue-codemirror-lite";
-require('codemirror/mode/javascript/javascript')
 
 export default {
-  components: {
-    codemirror
-  },
   props: {
     code: String,
     onUpdate:Function
@@ -19,38 +16,13 @@ export default {
   data:()=> ({          
   }),
   computed: {
-    editor() {
-      // get current editor object
-      return this.$refs.cEditor.editor;
-    },
-    editorOption(){
-        return {
-        mode: "javascript",
-        extraKeys: { "Ctrl-Space": "autocomplete" },
-        smartIndent: true,
-        lineNumbers: true,
-        indentWithTabs: true,
-        lineWrapping: true
-      }  
-    }
   },
     watch:{
     code:function(nv){
-      if(this.editor){
-        // this.editor.focus();
+      if(this.onUpdate){
+          this.onUpdate(nv);
       }
     }
-  },
-  methods:{
-      codeChanged(newValue){        
-        if(this.onUpdate){
-          this.onUpdate(newValue);
-        }
-      }
-  },
-  mounted() {
-    // use editor object...
-    // this.editor.focus();
   }
 };
 </script>

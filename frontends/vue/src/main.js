@@ -7,7 +7,7 @@ import { store } from './store/index'
 import App from './App.vue'
 
 
-import HomePage from './pages/HomePage'
+import HomePage from './pages/HomePage.vue'
 
 
 // import 'vuetify/dist/vuetify.min.css'

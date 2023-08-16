@@ -71,7 +71,6 @@ const actions = {
         return;
     },
     async getSample({ commit }, schema) {
-        console.log(schema)   
         if(schema){
             let [err,result] = await to(service.getSample(JSON.parse(schema)));
             ErrorHandler.handleError(err);

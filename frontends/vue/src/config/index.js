@@ -14,7 +14,9 @@ var conf = {
 
 const envConf = isProd ? conf.production : (isStage ? conf.staging : conf.development);
 
-export const BASE = {
+const BASE = {
     URL: envConf.host,
     AUTH: envConf.auth
 }
+
+export default BASE

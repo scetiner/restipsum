@@ -1,4 +1,4 @@
-const numeral = require('numeral');
+import numeral from "numeral"
 
 export const NumericFormatter = {
     floating: (value) => {

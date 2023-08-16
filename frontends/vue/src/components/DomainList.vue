@@ -119,7 +119,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 td {
   height: 35px !important;
 }

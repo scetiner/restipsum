@@ -14,17 +14,17 @@
         <v-responsive>
           <v-layout row>
             <v-flex xs4 class="p10">              
-              <span class="mb-10">Your JSON Model</span>
+              <span class="mb-10"><strong>Your JSON Model</strong></span>
               <br>
               <ceditor :code="sample" :onUpdate="sampleChanged"></ceditor>
               <v-btn @click="getSchemaFromSample()">Get Schema</v-btn> 
             </v-flex>
             <v-flex xs4 class="p10">
-              <span class="mb-10">Schema</span>
+              <span class="mb-10"><strong>Schema</strong></span>
               <ceditor :code="schema" :onUpdate="schemaChanged"></ceditor>
               <v-btn @click="getSampleFromSchema()">Get Sample</v-btn> 
             </v-flex>
-            <v-flex xs4 class="p10"><span class="mb-10">Generated Sample</span><ceditor :code="ipsum"></ceditor></v-flex>
+            <v-flex xs4 class="p10"><span class="mb-10"><strong>Generated Sample</strong></span><ceditor :code="ipsum"></ceditor></v-flex>
           </v-layout>          
         </v-responsive>
         </v-card>
@@ -63,7 +63,7 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import Vue from "vue";
-import Editor from "../components/Editor";
+import Editor from "./../components/Editor.vue";
 export default {
   components:{
     ceditor:Editor
@@ -88,7 +88,6 @@ export default {
       this.generateSchema(this.sampleStr);
     },
     getSampleFromSchema(){      
-      console.log(this.schemaStr);
       this.getSample(this.schemaStr);
     }
   },
@@ -106,9 +105,12 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .p10{
   position: relative;
   padding: 10px !important;
+}
+.mb-10 {
+  margin-bottom: 20px!important;
 }
 </style>

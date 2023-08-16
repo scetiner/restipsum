@@ -1,4 +1,4 @@
-module.exports = class ErrorHandler{
+export default class ErrorHandler{
     constructor(){
     }
 

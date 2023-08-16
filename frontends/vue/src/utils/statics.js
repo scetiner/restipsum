@@ -1,6 +1,7 @@
-import { BASE } from "../config/index";
-var conf = require('../config/index.js');
-export const URLS = {   
+import BASE  from "../config/index";
+import conf from'../config/index.js';
+
+const URLS = {   
     'BASE': getBase(), 
     'AUTH': BASE.AUTH,
     'API': {
@@ -21,3 +22,5 @@ export const URLS = {
 function getBase(){                
     return BASE.URL + '/api';
 }
+
+export default URLS

@@ -1,4 +1,4 @@
-import { URLS } from '../utils/statics';
+import  URLS  from '../utils/statics';
 import { HTTP } from '../utils/call-service';
 import ErrorHandler from "../utils/error-handler";
 import { to } from "await-to-js";
