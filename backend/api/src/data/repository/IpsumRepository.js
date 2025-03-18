@@ -1,10 +1,10 @@
-const { to } = require('await-to-js');
-const uuidv4 = require('uuid/v4');
-const Ipsum = require('../model/Ipsum');
-const Logger = require('../../utils/Logger');
-const ErrorHandler = require('../../utils/ErrorHandler');
+import { to } from 'await-to-js';
+import { v4 as uuidv4 } from 'uuid';
+import Ipsum from '../model/Ipsum.js';
+import Logger from '../../utils/Logger.js';
+import ErrorHandler from '../../utils/ErrorHandler.js';
 
-module.exports = class IpsumRepository {
+export default class IpsumRepository {
     constructor() {
         this._logger = new Logger('route-ipsum-repo').getLogger();
     }

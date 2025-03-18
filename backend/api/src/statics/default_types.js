@@ -1,8 +1,8 @@
-exports.SystemMessages = {
+export const SystemMessages = {
     GENERIC_ERROR : 'Something went wrong, we are working on it, please try again later'    
 }
 
-exports.DefaultSchema = [
+export const DefaultSchema = [
     {
         "name": "name",
         "min": 3,

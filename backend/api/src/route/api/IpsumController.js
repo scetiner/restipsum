@@ -1,12 +1,12 @@
-const BaseRoute = require('../infra/base/BaseRoute');
-const Logger = require('../../utils/Logger');
-const { ErrorTypes } = require('../infra/middlewares/ErrorMiddleware');
-const IpsumService = require('../../service/IpsumService');
-const { SystemMessages, DefaultSchema } = require('../../statics/default_types');
-const { to } = require('await-to-js');
-const ErrorHandler = require('../../utils/ErrorHandler');
+import BaseRoute from '../infra/base/BaseRoute.js';
+import Logger from '../../utils/Logger.js';
+import { ErrorTypes } from '../infra/middlewares/ErrorMiddleware.js';
+import IpsumService from '../../service/IpsumService.js';
+import { SystemMessages, DefaultSchema } from '../../statics/default_types.js';
+import { to } from 'await-to-js';
+import ErrorHandler from '../../utils/ErrorHandler.js';
 
-module.exports = class IpsumController {
+export default class IpsumController {
     constructor() {
         this._logger = new Logger('controller-ipsum').getLogger();
         this._ipsumService = new IpsumService();

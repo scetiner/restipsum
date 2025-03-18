@@ -1,8 +1,8 @@
-var Randomizer = require('./Randomizer');
-var validator = require('validator');
-var moment = require('moment');
+import Randomizer from './Randomizer.js';
+import validator from 'validator';
+import moment from 'moment';
 
-module.exports = class SchemaUtils {
+export default class SchemaUtils {
     constructor() {
         this.randomizer = new Randomizer();
     }

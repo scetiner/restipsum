@@ -1,23 +1,11 @@
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+import mongoose, { Schema } from 'mongoose';
 
-var IpsumSchema = new Schema({
-    token: { type: String, required: true, index: { unique: true } },
-    model: { type: String },
-    count:{ type: Number, default: 0 },
-    created_at: { type: Date, default: Date.now },
-    updated_at: { type: Date, default: Date.now }
+const IpsumSchema = new Schema({
+    token: { type: String, required: true },
+    model: { type: String, required: true },
+    createdAt: { type: Date, default: Date.now }
 });
 
+const IpsumModel = mongoose.model('Ipsum', IpsumSchema);
 
-IpsumSchema.pre('save', function(next) {
-    var ipsum = this;
-    ipsum.updated_at = new Date();
-
-    // if created_at doesn't exist, add to that field
-    if (!ipsum.created_at)
-    ipsum.created_at = ipsum.updated_at;
-    next();
-});
-
-module.exports = mongoose.model('Ipsum', IpsumSchema);
+export default IpsumModel;

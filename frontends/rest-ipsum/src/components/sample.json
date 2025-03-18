@@ -1,0 +1,28 @@
+{
+  "name": "rest ipsum",
+  "contact": "root@restipsum.com",
+  "ttl": 1,
+  "supports": [
+    "str",
+    "bool",
+    "int",
+    "float",
+    "enum",
+    "email",
+    "ip",
+    "uuid",
+    "date",
+    "url",
+    "model"
+  ],
+  "description": "Generates sample data for your client over a simple GET endpoint.",
+  "isFree": true,
+  "website": "https://restipsum.com",
+  "localhost": "127.0.0.1",
+  "time": "Fri, 29 Oct 1920 09:30:00 GMT",
+  "technologies": {
+    "backend": "Node.js",
+    "frontend": "AngularJs",
+    "database": "NoSQL"
+  }
+}

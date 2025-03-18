@@ -1,7 +1,6 @@
-const uuidv4 = require('uuid/v4');
-const { ObjectId } = require('mongoose').Types
+import { v4 as uuidv4 } from 'uuid';
 
-module.exports = class Randomizer {
+export default class Randomizer {
     constructor() {
 
     }

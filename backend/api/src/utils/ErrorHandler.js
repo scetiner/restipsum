@@ -1,6 +1,6 @@
-const Logger = require('./Logger');
+import Logger from './Logger.js';
 const logger = new Logger('utils-error-handler').getLogger();
-module.exports = class ErrorHandler{
+export default class ErrorHandler{
     constructor(){
     }
 

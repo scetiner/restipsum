@@ -1,8 +1,7 @@
-const Logger = require('../../../utils/Logger');
-const BaseRoute = require('../base/BaseRoute');
-const _ErrorTypes = require('../middlewares/ErrorMiddleware').ErrorTypes;
+import Logger from '../../../utils/Logger.js';
+import BaseRoute from '../base/BaseRoute.js';
 
-module.exports = class BaseRouterValidator {
+export default class BaseRouterValidator {
     constructor(){
         this.logger = new Logger('route-validator-base').getLogger()
     }

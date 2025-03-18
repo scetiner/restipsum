@@ -1,9 +1,10 @@
-const fs = require('fs');
-const log4js = require('log4js');
+import fs from 'fs';
+import log4js from 'log4js';
 
-module.exports = class Logger{
-    constructor(name){
+export default class Logger {
+    constructor(name) {
         this.name = name;
+        this.logger = log4js.getLogger(name);
     }
 
     _stringifyArguments(args) {
@@ -21,7 +22,7 @@ module.exports = class Logger{
         return str;
     }
 
-    static initializeLogger(logPath, logConfigPath) {
+    static async initializeLogger(logPath, logConfigPath) {
         /**
          * make a log directory, just in case it isn't there.
          */
@@ -32,45 +33,52 @@ module.exports = class Logger{
                 console.error('Could not set up log directory, error was: ', e);
             }
         }
-    
-        log4js.configure(logConfigPath);
+
+        try {
+            const config = await import(logConfigPath, { assert: { type: 'json' } });
+            log4js.configure(config.default);
+        } catch (e) {
+            console.error('Could not configure log4js, error was: ', e);
+        }
     }
-    
-    static getHttpLogger(){
+
+    static getHttpLogger() {
         return log4js.getLogger('http');
     }
-    
+
     getLogger() {
-        const closureLogger = log4js.getLogger(this.name);
         const self = this;
-        if (global.conf.logLevel) {
-            closureLogger.setLevel(global.conf.logLevel);
+
+        // Set log level from config if available
+        if (global.conf && global.conf.logLevel) {
+            this.logger.level = global.conf.logLevel.toLowerCase();
         }
+
         return {
             error(...args) {
-                closureLogger.error(self._stringifyArguments(args));
+                self.logger.error(self._stringifyArguments(args));
             },
             warn(...args) {
-                closureLogger.warn(self._stringifyArguments(args));
+                self.logger.warn(self._stringifyArguments(args));
             },
             info(...args) {
-                closureLogger.info(self._stringifyArguments(args));
+                self.logger.info(self._stringifyArguments(args));
             },
             debug(...args) {
-                closureLogger.debug(self._stringifyArguments(args));
+                self.logger.debug(self._stringifyArguments(args));
             }
         };
     }
-    
+
     convertToString(data) {
         try {
             return JSON.stringify(data);
         } catch (err) {
-            log4js.getLogger('logger').error('Error occured during converting JSON to string:', err);
+            log4js.getLogger('logger').error('Error occurred during converting JSON to string:', err);
             return data;
         }
     }
-    
+
     convertToJson(data) {
         try {
             if (data instanceof Object === false) {
@@ -78,7 +86,7 @@ module.exports = class Logger{
             }
             return data;
         } catch (err) {
-            log4js.getLogger('logger').error('Error occured during converting data to JSON:', err);
+            log4js.getLogger('logger').error('Error occurred during converting data to JSON:', err);
             return data;
         }
     }

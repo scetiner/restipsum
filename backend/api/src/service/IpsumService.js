@@ -1,10 +1,8 @@
-const IpsumRepository = require("../data/repository/IpsumRepository");
-const Logger = require("../utils/Logger");
-const { to } = require("await-to-js");
-const ErrorHandler = require("../utils/ErrorHandler");
-const SchemaUtils = require("../utils/SchemaUtils");
+import IpsumRepository from "../data/repository/IpsumRepository.js";
+import Logger from "../utils/Logger.js";
+import SchemaUtils from "../utils/SchemaUtils.js";
 
-module.exports = class IpsumService {
+export default class IpsumService {
   constructor() {
     this._ipsumRepository = new IpsumRepository();
     this._schemaUtils = new SchemaUtils();

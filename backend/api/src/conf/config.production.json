@@ -1,5 +1,5 @@
 {
    "logLevel":"warning",
     "rejectUnauthorized": false,
-    "listenPort": 9595
+    "listenPort": 8081
 }

@@ -1,4 +1,4 @@
-module.exports = class BaseRoute {
+export default class BaseRoute {
     static isSessionValid(req) {
         const now = new Date();
         // difference between session expire time and now must be negative to be session alive.
